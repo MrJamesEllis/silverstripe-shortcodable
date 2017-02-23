@@ -34,7 +34,8 @@
                     var shortcodable = tinyMCE.activeEditor.plugins.shortcodable;
                     var ed = this.getEditor();
                     var newContent = shortcodable.replacePlaceholdersWithShortcodes($(this).val(), ed);
-                    $(this).val(newContent);
+                    ed.setContent(newContent);
+                    this._super(e);
                 }
             },
         });
@@ -74,7 +75,6 @@
                         var shortcodable = tinyMCE.activeEditor.plugins.shortcodable;
                         ed.replaceContent(shortcode);
                         var newContent = shortcodable.replaceShortcodesWithPlaceholders(ed.getContent(), ed.getInstance());
-                        console.log(newContent);
                         ed.setContent(newContent);
                     });
                 }
